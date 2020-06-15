@@ -51,6 +51,33 @@ namespace SportsORM.Controllers
         [HttpGet("level_2")]
         public IActionResult Level2()
         {
+          ViewBag.One = context.Teams.Include(t => t.CurrLeague)
+                                      .Where(t => t.CurrLeague.Name
+                                      .Contains("Atlantic Soccer Conference"))
+                                      .ToList();
+          ViewBag.Two = context.Players.Include(p => p.CurrentTeam)
+                                        .Where(p => p.CurrentTeam.TeamName == "Penguins" && p.CurrentTeam.Location == "Boston")
+                                        .ToList();
+          ViewBag.Three = context.Teams.Include(t => t.CurrLeague)
+                                      .Where(t => t.CurrLeague.Name == "International Collegiate Baseball Conference")
+                                      .ToList();
+          ViewBag.Four = context.Teams.Include(t => t.CurrLeague)
+                                      .Where(t => t.CurrLeague.Name == "American Conference of Amateur Football")
+                                      .ToList();
+          ViewBag.Five = context.Teams.ToList();
+          ViewBag.Six = context.Teams.Include(t => t.CurrentPlayers)
+                                      .Where(t => t.CurrentPlayers
+                                      .Any(p => p.FirstName == "Sophia"))
+                                      .ToList();
+          ViewBag.Seven = context.Players.Include(p => p.CurrentTeam)
+                                        .Where(p => p.CurrentTeam.TeamName != "Raptors" && p.LastName == "Flores")
+                                        .ToList();
+          ViewBag.Eight = context.Players.Include(p => p.CurrentTeam)
+                                        .Where(p => p.CurrentTeam.TeamName == "Tiger-Cats" && p.CurrentTeam.Location == "Manitoba")
+                                        .ToList();
+          ViewBag.Nine = context.Teams.Include(t => t.AllPlayers)
+                                      .Where(t => t.AllPlayers.Count >= 12)
+                                      .ToList();                                                                            
             return View();
         }
 

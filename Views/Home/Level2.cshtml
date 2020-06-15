@@ -6,13 +6,130 @@
     <p>Using the SportsORM, complete all the following queries and show their results on Level2.cshtml.</p>
     <ol>
         <li>...all teams in the Atlantic Soccer Conference</li>
+            <table class="table table-striped col-5">
+              <tr>
+                  <th>Location</th>
+                  <th>Team Name</th>
+              </tr>
+              @foreach (Team t in ViewBag.One)
+                {
+                  <tr>
+                      <td>@t.Location</td>
+                      <td>@t.TeamName</td>
+                  </tr>
+                }
+            </table>
         <li>...all (current) players on the Boston Penguins</li>
+            <table class="table table-striped col-5">
+              <tr>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+              </tr>
+            @foreach (Player p in ViewBag.two)
+              {
+                  <tr>
+                      <td>@p.FirstName</td>
+                      <td>@p.LastName</td>
+                  </tr>
+              }
+            </table>
         <li>...all teams in the International Collegiate Baseball Conference</li>
+            <table class="table table-striped col-5">
+              <tr>
+                  <th>Location</th>
+                  <th>Team Name</th>
+              </tr>
+              @foreach (Team t in ViewBag.Three)
+                {
+                  <tr>
+                      <td>@t.Location</td>
+                      <td>@t.TeamName</td>
+                  </tr>
+                }
+            </table>
         <li>...all teams in the American Conference of Amateur Football</li>
+            <table class="table table-striped col-5">
+              <tr>
+                  <th>Location</th>
+                  <th>Team Name</th>
+              </tr>
+              @foreach (Team t in ViewBag.Four)
+                {
+                  <tr>
+                      <td>@t.Location</td>
+                      <td>@t.TeamName</td>
+                  </tr>
+                }
+            </table>
         <li>...all football teams</li>
+            <table class="table table-striped col-5">
+              <tr>
+                  <th>Location</th>
+                  <th>Team Name</th>
+              </tr>
+              @foreach (Team t in ViewBag.Five)
+                {
+                  <tr>
+                      <td>@t.Location</td>
+                      <td>@t.TeamName</td>
+                  </tr>
+                }
+            </table>
         <li>...all teams with a (current) player named "Sophia"</li>
+            <table class="table table-striped col-5">
+              <tr>
+                  <th>Location</th>
+                  <th>Team Name</th>
+              </tr>
+              @foreach (Team t in ViewBag.Six)
+                {
+                  <tr>
+                      <td>@t.Location</td>
+                      <td>@t.TeamName</td>
+                  </tr>
+                }
+            </table>
         <li>...everyone with the last name "Flores" who DOESN'T (currently) play for the Raptors (hint: think about ways you can filter data on the cshtml side)</li>
+            <table class="table table-striped col-5">
+              <tr>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+              </tr>
+            @foreach (Player p in ViewBag.Seven)
+              {
+                  <tr>
+                      <td>@p.FirstName</td>
+                      <td>@p.LastName</td>
+                  </tr>
+              }
+            </table>
         <li>...all current players with the Manitoba Tiger-Cats</li>
+            <table class="table table-striped col-5">
+              <tr>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+              </tr>
+            @foreach (Player p in ViewBag.Eight)
+              {
+                  <tr>
+                      <td>@p.FirstName</td>
+                      <td>@p.LastName</td>
+                  </tr>
+              }
+            </table>
         <li>...all teams that have had 12 or more players</li>
+            <table class="table table-striped col-5">
+              <tr>
+                  <th>Location</th>
+                  <th>Team Name</th>
+              </tr>
+              @foreach (Team t in ViewBag.Nine)
+                {
+                  <tr>
+                      <td>@t.Location</td>
+                      <td>@t.TeamName</td>
+                  </tr>
+                }
+            </table>
     </ol>
 </div>

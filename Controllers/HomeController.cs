@@ -84,6 +84,42 @@ namespace SportsORM.Controllers
         [HttpGet("level_3")]
         public IActionResult Level3()
         {
+          ViewBag.One = context.Players
+                              .Include(p => p.AllTeams)
+                              .ThenInclude(pt => pt.TeamOfPlayer)
+                              .FirstOrDefault(p => p.FirstName == "Alexander" && p.LastName == "Bailey");
+          ViewBag.Two = context.Teams
+                              .Include(t => t.AllPlayers)
+                              .ThenInclude(pt => pt.PlayerOnTeam)
+                              .FirstOrDefault(t => t.Location == "Manitoba" && t.TeamName == "Tiger-Cats");
+          ViewBag.Three = context.PlayerTeams
+                              .Include(pt => pt.PlayerOnTeam)
+                              .ThenInclude(p => p.CurrentTeam)
+                              .Include(pt => pt.TeamOfPlayer)
+                              .Where(pt => pt.TeamOfPlayer.Location == "Wichita" && pt.TeamOfPlayer.TeamName == "Vikings")
+                              .Where(pt => pt.PlayerOnTeam.CurrentTeam.Location != "Wichita" && pt.PlayerOnTeam.CurrentTeam.TeamName != "Vikings")
+                              .ToList();
+          ViewBag.Four = context.PlayerTeams
+                                .Include(pt => pt.PlayerOnTeam)
+                                .ThenInclude(p => p.CurrentTeam)
+                                .Include(pt => pt.TeamOfPlayer)
+                                .Where(pt => pt.PlayerOnTeam.FirstName == "Emily" && pt.PlayerOnTeam.LastName == "Sanchez")
+                                .Where(pt => pt.TeamOfPlayer.Location != "Indiana" && pt.TeamOfPlayer.TeamName != "Royals")
+                                .ToList();
+          ViewBag.Five = context.PlayerTeams
+                                .Include(pt => pt.TeamOfPlayer)
+                                .ThenInclude( t => t.CurrLeague)
+                                .Include(pt => pt.PlayerOnTeam)
+                                .Where(pt => pt.PlayerOnTeam.FirstName == "Levi")
+                                .Where(pt => pt.TeamOfPlayer.CurrLeague.Name == "Atlantic Federation of Amateur Baseball Players")
+                                .ToList();
+          ViewBag.Six = context.Players
+                                .Include(p => p.AllTeams)
+                                .OrderByDescending(p => p.AllTeams.Count)
+                                .ToList();
+
+
+
             return View();
         }
 
